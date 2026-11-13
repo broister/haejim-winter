@@ -12,6 +12,7 @@
                 '콧노래가 나오는 날', '창가의 오후', '해져도, 여기에'];
   var LIST = '해짐의 겨울';
   var LOGO = '.hj-logo'; // 트리를 올릴 로고
+  var SLOT = '.hj-icons'; // 플레이어를 넣을 헤더 아이콘 영역
   var SNOW = true; // 눈 내리는 효과 (끄려면 false)
   var SNOW_PAGES = ['/', '/index.html', '/about.html', '/process.html']; // 눈이 내리는 페이지 (메인·스토리)
   var JMARK = 'data:image/png;base64,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'; // LP 가운데 J 서브마크
@@ -40,6 +41,7 @@
   + '.hjw-nav:hover,.hjw-nav:focus-visible{opacity:1}'
   + '.hjw-nav:last-child{margin-right:6px}'
   + '@keyframes hjw-spin{to{transform:rotate(360deg)}}'
+  + '.hj-icons{position:relative}.hjw--hdr{position:static;left:auto;bottom:auto;z-index:auto;width:44px;height:44px;justify-content:center;flex:none}.hjw--hdr .hjw-disc{width:34px;height:34px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.25))}.hjw--hdr .hjw-label{width:14px;height:14px;margin:-7px 0 0 -7px;background-size:9px 9px}.hjw--hdr .hjw-arm{height:17px;width:2px;top:-3px;right:0}.hjw--hdr .hjw-arm:before{width:6px;height:6px;left:-2px;top:-2px}.hjw--hdr .hjw-panel{position:absolute;top:calc(100% + 6px);right:0;margin:0;padding:0 0 0 16px;height:40px;border-radius:20px;max-width:none;transform:translateY(-4px);visibility:hidden;transition:opacity .25s ease,transform .25s ease,visibility .25s;z-index:950}.hjw--hdr.is-open .hjw-panel{opacity:1;transform:none;visibility:visible;max-width:none}'
   + LOGO + '{position:relative}'
   + '.hjw-tree{position:absolute;left:-3px;bottom:calc(100% - 7px);width:18px;height:22px;pointer-events:none;line-height:0}'
   + '.hjw-tree svg{display:block;width:100%;height:100%;overflow:visible}'
@@ -114,7 +116,10 @@
   root.innerHTML = '<button type="button" class="hjw-disc" aria-pressed="false"><span class="hjw-vinyl"><span class="hjw-label"></span></span><span class="hjw-arm"></span></button>'
     + '<div class="hjw-panel"><div class="hjw-meta"><span class="hjw-list"></span><span class="hjw-title"></span></div>'
     + '<button type="button" class="hjw-nav hjw-prev" aria-label="이전 곡">‹</button><button type="button" class="hjw-nav hjw-next" aria-label="다음 곡">›</button></div>';
-  document.body.appendChild(root);
+  // 헤더의 검색 아이콘 왼쪽에 넣고, 헤더가 없으면 화면 왼쪽 아래에 띄움
+  var slot = document.querySelector(SLOT);
+  if (slot) { root.classList.add('hjw--hdr'); slot.insertBefore(root, slot.firstChild); }
+  else document.body.appendChild(root);
   var disc = root.querySelector('.hjw-disc'), elList = root.querySelector('.hjw-list'), elTitle = root.querySelector('.hjw-title');
   var audio = new Audio(); audio.preload = 'none';
 
