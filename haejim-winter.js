@@ -73,8 +73,8 @@
     logo.appendChild(tree);
   }
 
-  /* ---------- 눈 내리는 효과 (클릭을 막지 않고, 움직임 줄이기 설정이면 꺼짐) ---------- */
-  if (SNOW && SNOW_PAGES.indexOf(location.pathname) > -1 && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+  /* ---------- 눈 내리는 효과 (클릭을 막지 않음, 기기의 움직임 줄이기 설정과 상관없이 모두에게 내림) ---------- */
+  if (SNOW && SNOW_PAGES.indexOf(location.pathname) > -1) {
     var cv = document.createElement('canvas');
     cv.className = 'hjw-snow'; cv.setAttribute('aria-hidden', 'true'); document.body.appendChild(cv);
     var ctx = cv.getContext('2d'), W = 0, H = 0, flakes = [], raf = 0;
@@ -96,9 +96,10 @@
         var f = flakes[i];
         f.y += f.v; f.a += .012; f.x += Math.sin(f.a) * f.w * .4;
         if (f.y > H + 8) { flakes[i] = mk(false); continue; }
-        // 밝은 배경에서도 보이도록 옅은 그림자를 먼저 그림
-        ctx.beginPath(); ctx.arc(f.x, f.y + .6, f.r + .9, 0, 6.283); ctx.fillStyle = 'rgba(110,100,85,.16)'; ctx.fill();
-        ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.283); ctx.fillStyle = 'rgba(255,255,255,.95)'; ctx.fill();
+        // 밝은 배경에서도 보이도록 그림자와 테두리를 함께 그림
+        ctx.beginPath(); ctx.arc(f.x, f.y + .7, f.r + 1.1, 0, 6.283); ctx.fillStyle = 'rgba(95,85,70,.30)'; ctx.fill();
+        ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.283); ctx.fillStyle = 'rgba(255,255,255,.97)'; ctx.fill();
+        ctx.lineWidth = .8; ctx.strokeStyle = 'rgba(95,85,70,.45)'; ctx.stroke();
       }
       raf = requestAnimationFrame(tick);
     };
